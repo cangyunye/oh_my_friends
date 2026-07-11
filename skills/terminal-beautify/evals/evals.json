@@ -1,0 +1,47 @@
+﻿{
+  "skill_name": "terminal-beautify",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我刚装了一台 Windows 11 笔记本，帮我配置终端美化方案。需要 Starship、lsd、bat、fzf、zoxide 这些工具，用 PowerShell。公司网络访问 GitHub 很慢，可能需要从国内镜像下载。我还没装 Rust，所以 cargo 方式就不用了。",
+      "expected_output": "用户确认平台为 Windows，申请安装权限，检测到无 Rust 工具链后自动选择 GitHub Releases 方式，检测到 GitHub 慢后询问是否使用国内镜像，安装工具到 D:\\tools\\bin，配置 $PROFILE，验证 PATH，输出完成报告",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我有一台 Ubuntu 20.04 服务器，glibc 版本比较旧，想装 Nushell 和 Starship 还有 fd。apt 里的版本太老了，我想用最新的。你帮我看看怎么搞。另外这台机器没装 Rust，我也不太想装因为编译太慢。",
+      "expected_output": "检测到 Ubuntu 20.04 glibc 2.31，检测无 Rust 工具链，尝试 GitHub Releases 下载 Nushell 时发现 glibc 不兼容，告知用户并提供降级方案（使用旧版 Nushell 或 cargo 编译），处理 fd 和 Starship 的正常安装，验证 PATH",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "帮我配置我的 Mac（M3 芯片），装一套终端美化工具。brew 已经装好了。我想要 Starship、ripgrep、fd、bat、lsd、fzf、zoxide、Nushell 这些，还有 JetBrainsMono Nerd Font。另外帮我配置 zsh 的别名。",
+      "expected_output": "检测到 macOS ARM64，确认 brew 可用，申请安装权限，通过 brew 安装所有工具，配置 ~/.zshrc 添加 Starship init 和别名，安装 Nerd Font，配置 Starship 主题，验证 PATH，输出完成报告",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "帮我装个 bat，我在 Windows 上，PowerShell。没有 Rust 环境。",
+      "expected_output": "检测到 Windows 平台，无 Rust 工具链，选择 GitHub Releases 下载 bat，询问安装目录，下载解压，添加到 PATH，验证 Get-Command bat 成功",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "我想装个 Nushell，但我的 Ubuntu 是 20.04 的 glibc 比较老。能不能装？",
+      "expected_output": "检测到 Linux + glibc 2.31，告知用户新版 Nushell 需要 glibc 2.35+，提供降级方案（旧版下载或 cargo 编译），询问用户选择，确认后执行",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "macOS 上帮我装个 zoxide，我有 brew。",
+      "expected_output": "检测到 macOS，确认 brew 可用，通过 brew 安装 zoxide，配置 zsh 初始化，验证 PATH",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "我 Windows 上已经有 Starship 了，但我想换成 pastel-powerline 主题，再装个 lsd。",
+      "expected_output": "检测到 Starship 已安装（不重复安装），直接配置主题 preset，安装 lsd，配置别名，验证 PATH",
+      "files": []
+    }
+  ]
+}
