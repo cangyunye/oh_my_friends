@@ -1,0 +1,53 @@
+{
+  "skill_name": "ai-skills-office",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我装几个好用的技能。我主要写后端 Java，偶尔也要代码审查。别问太多，直接给我装就行，我在 Windows 上，装到全局。",
+      "expected_output": "激活技能；确认系统为 Windows 及架构；检测 opencode/pi/omp 是否安装；展示来自预研目录的 markdown 技能清单（含中文使用场景），清单必须包含通用必装 5 项（git-commit、skill-creator、loop-me、mcp-builder、handoff），不编造技能；询问全局/项目安装范围；确认后执行安装：通用必装 4 项优先从本仓库 vendor/ 复制（备份优先），其余按目录命令在线安装，并验证",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我需要一个能帮我写 PPT 和 Word 文档的技能，还要一个前端设计规范。我主要用 opencode，项目根目录在 D:\\myapp。",
+      "expected_output": "激活技能；确认系统与 opencode 安装状态；从目录推荐 docx/pptx（anthropics）与 dashi-ppt-skill 等并给出安装命令，清单包含通用必装 4 项；询问全局/项目；对前端设计需求进入 DESIGN.md 工作流：询问目标风格/面向对象/使用场景，clone awesome-design-md，将 DESIGN.md 放入项目根目录，并在 AGENTS.md 中加入遵循设计规范的指示",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "我在 macOS（M2）上用 omp（oh-my-pi），想装 superpowers 那套技能，装全局的。",
+      "expected_output": "激活技能；确认 macOS arm64；检测到 omp 已安装（兼容 pi 目录 ~/.pi/agent/skills/）；清单包含通用必装 5 项（优先复制 vendor/ 到 pi/omp 全局路径，在线回退命令见目录）；按目录给出 superpowers 安装命令：pi install git:github.com/obra/superpowers 或 omp install（--scope=user），验证用 pi list 或检查技能目录/omp --skills= 过滤",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "帮我在 opencode 里装一个能自动写日报周报的技能，有没有？我赶时间。",
+      "expected_output": "激活技能；确认系统；检查目录后如实告知预研目录中没有该技能，不编造；询问是否允许联网查找新技能或由用户提供来源；在获得许可前不擅自联网或编造",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "我啥都想要，你直接按开发人员的默认推荐给我列一下，我看看再选。",
+      "expected_output": "激活技能；确认系统与 opencode/pi/omp 安装状态；展示通用必装 5 项（git-commit、skill-creator、loop-me、mcp-builder、handoff）与开发分类的 12 项默认推荐清单（brainstorming、code-review、grill-with-docs、handoff、implement、loop-me、skill-creator、subagent-driven-development、tdd、writing-plans、executing-plans、mcp-builder），每项含来源与中文场景；其中 grill-with-docs 为依赖组（grilling、domain-modeling）成员，出现必须整组；询问全局/项目安装范围",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "我是测试人员，主要写测试用例和做网页回归测试。帮我在 opencode 上装几个好用的技能，全局，Windows。我赶时间别啰嗦。另外把那种不论什么角色都应该装的技能也给我带上。",
+      "expected_output": "激活技能；确认系统与 opencode/pi/omp；清单首行包含通用必装 5 项（git-commit、skill-creator、loop-me、mcp-builder、handoff，标注人人必备，按目录通用必装小节）；其余按测试角色推荐 qa-skills/webapp-testing/browser-use/docx/xlsx 等；测试默认推荐含 grill-with-docs 时须联动 grilling、domain-modeling（依赖组）；不自行给其他技能编造人人必备标记；赶时间下合并必问项（系统+范围）；安装时通用必装优先复制 vendor/，并验证",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "我是后端开发，Windows 上用 opencode，装到全局。帮我装 grill-with-docs，我想让 agent 实现前对照文档质询我。只要这一个，我赶时间。",
+      "expected_output": "激活技能；确认系统与 opencode；识别 grill-with-docs 属依赖必装 grilling 组，自动带出 grilling + domain-modeling 整组安装（出现任一必须整组，依据目录依赖必装小节），并说明单独装会导致运行时调用落空；通用必装 5 项仍列入清单；安装命令用 engineering/ 与 productivity/ 精确子路径；赶时间下合并必问项",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "我是设计师/市场人员，主要做前端页面设计和写文案，不写代码。我用 oh-my-pi（omp）这个 agent。帮我在 omp 上装几个好用的技能，全局。我赶时间。另外把不论什么角色都应该装的技能也带上。",
+      "expected_output": "激活技能；确认系统与 opencode/pi/omp（检测到 omp 已安装）；通用必装 5 项全部包含并标注人人必备；按设计/文案角色推荐 hallmark/frontend-design/docx/xlsx/dashi-ppt-skill 等；安装时通用必装优先复制 vendor/ 到 omp 全局目录 ~/.pi/agent/skills/（或 omp install --scope=user），验证用检查目录或 omp --skills= 过滤；提及 DESIGN.md 工作流（风格/对象/场景三问）；不把 omp 当 pi 处理；赶时间下合并必问项",
+      "files": []
+    }
+  ]
+}
