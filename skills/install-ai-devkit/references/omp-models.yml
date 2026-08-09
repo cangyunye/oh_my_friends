@@ -1,0 +1,48 @@
+# ~/.omp/agent/models.yml  — oh-my-pi (omp) 自定义 provider 配置模板
+# 用法：把整个文件内容（或其中的 providers: 段）写入全局 models 配置。
+# apiKey 先按同名环境变量解析，否则视为字面量；也可用 ${VAR} / $VAR 引用。
+# 若已存在 providers 键，只把缺失的 provider 合并进去，不要覆盖已有项。
+# 模型 ID 按需求固定为 qwen3.6 / qwen3.7 / qwen3.8；若实际调用报模型不存在，
+# 请按阿里云百炼模型列表补充具体后缀（如 qwen3.7-plus、qwen3.8-max）。
+
+providers:
+  # 1. DeepSeek 标准供应商
+  deepseek:
+    baseUrl: https://api.deepseek.com
+    api: openai-completions
+    apiKey: DEEPSEEK_API_KEY
+    models:
+      - id: deepseek-v4-flash
+        name: DeepSeek V4 Flash
+      - id: deepseek-v4-pro
+        name: DeepSeek V4 Pro
+
+  # 2. 本地 provider（ollama），免认证
+  ollama:
+    baseUrl: http://127.0.0.1:11434
+    api: openai-responses
+    auth: none
+    discovery:
+      type: ollama
+
+  # 3. 阿里云百炼（dashscope compatible-mode）
+  dashscope:
+    baseUrl: https://dashscope.aliyuncs.com/compatible-mode/v1
+    api: openai-completions
+    apiKey: DASHSCOPE_API_KEY
+    models:
+      - id: qwen3.6
+        name: Qwen 3.6
+      - id: qwen3.7
+        name: Qwen 3.7
+      - id: qwen3.8
+        name: Qwen 3.8
+
+  # 4. 自定义供应商（base_url 与 api_key 用环境变量保存）
+  custom:
+    baseUrl: ${MY_CUSTOM_PROVIDER_BASE_URL}
+    api: openai-completions
+    apiKey: MY_CUSTOM_PROVIDER_API_KEY
+    models:
+      - id: my-model
+        name: My Custom Model

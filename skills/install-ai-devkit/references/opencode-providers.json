@@ -1,0 +1,45 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "deepseek": {
+      "options": {
+        "baseURL": "https://api.deepseek.com",
+        "apiKey": "{env:DEEPSEEK_API_KEY}"
+      },
+      "models": {
+        "deepseek-v4-flash": { "name": "DeepSeek V4 Flash" },
+        "deepseek-v4-pro": { "name": "DeepSeek V4 Pro" }
+      }
+    },
+    "ollama": {
+      "options": { "baseURL": "http://localhost:11434/api" },
+      "models": {
+        "qwen3:8b": { "name": "Qwen3 8B (local)" }
+      }
+    },
+    "dashscope": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Aliyun DashScope",
+      "options": {
+        "baseURL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "apiKey": "{env:DASHSCOPE_API_KEY}"
+      },
+      "models": {
+        "qwen3.6": { "name": "Qwen 3.6" },
+        "qwen3.7": { "name": "Qwen 3.7" },
+        "qwen3.8": { "name": "Qwen 3.8" }
+      }
+    },
+    "custom": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Custom Provider",
+      "options": {
+        "baseURL": "{env:MY_CUSTOM_PROVIDER_BASE_URL}",
+        "apiKey": "{env:MY_CUSTOM_PROVIDER_API_KEY}"
+      },
+      "models": {
+        "my-model": { "name": "My Model" }
+      }
+    }
+  }
+}

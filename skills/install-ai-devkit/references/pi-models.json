@@ -1,0 +1,39 @@
+{
+  "providers": {
+    "deepseek": {
+      "baseUrl": "https://api.deepseek.com",
+      "api": "openai-completions",
+      "apiKey": "$DEEPSEEK_API_KEY",
+      "models": [
+        { "id": "deepseek-v4-flash", "name": "DeepSeek V4 Flash" },
+        { "id": "deepseek-v4-pro", "name": "DeepSeek V4 Pro" }
+      ]
+    },
+    "ollama": {
+      "baseUrl": "http://localhost:11434/v1",
+      "api": "openai-completions",
+      "apiKey": "ollama",
+      "models": [
+        { "id": "qwen3:8b", "name": "Qwen3 8B (local)" }
+      ]
+    },
+    "dashscope": {
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "api": "openai-completions",
+      "apiKey": "$DASHSCOPE_API_KEY",
+      "models": [
+        { "id": "qwen3.6", "name": "Qwen 3.6" },
+        { "id": "qwen3.7", "name": "Qwen 3.7" },
+        { "id": "qwen3.8", "name": "Qwen 3.8" }
+      ]
+    },
+    "custom": {
+      "baseUrl": "$MY_CUSTOM_PROVIDER_BASE_URL",
+      "api": "openai-completions",
+      "apiKey": "$MY_CUSTOM_PROVIDER_API_KEY",
+      "models": [
+        { "id": "my-model", "name": "My Custom Model" }
+      ]
+    }
+  }
+}

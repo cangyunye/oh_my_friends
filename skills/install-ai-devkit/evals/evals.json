@@ -1,0 +1,29 @@
+{
+  "skill_name": "install-ai-devkit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我装一套 AI 开发工具吧，我在 Windows 上，要装 task 和 opencode，别问太多。",
+      "expected_output": "激活技能；确认系统为 Windows 及架构（AMD64/ARM64）；展示 markdown 工具清单（task/opencode/omp/pi 及仓库与脚本）并确认选择；对已确认的工具运行 scripts 下对应 .bat 脚本（装到 %USERPROFILE%\\.local\\bin，无需管理员权限）；提示脚本自动从 GitHub 官方 release 解析最新版本；安装后检测 agent 并询问是否继续配置 provider",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "给 opencode 配置 provider：deepseek、ollama、阿里云 qwen 和自定义的，api-key 我到时候自己填。",
+      "expected_output": "激活技能；找到 opencode 全局配置 ~/.config/opencode/opencode.json（不存在则创建）；按 references/opencode-providers.json 模板写入四类 provider（deepseek-v4-flash/deepseek-v4-pro、ollama 本地、dashscope qwen3.6/qwen3.7/qwen3.8、自定义 MY_CUSTOM_PROVIDER_BASE_URL/MY_CUSTOM_PROVIDER_API_KEY）；api-key 全部用环境变量占位不写入真实密钥；合并保留已有 provider 配置；告知用户需要设置的环境变量清单",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "我在 macOS（M2）上用 oh-my-pi，帮我把模型供应商配上，deepseek 和阿里云。",
+      "expected_output": "激活技能；确认 macOS arm64；定位 oh-my-pi 的全局 models 配置 ~/.omp/agent/models.yml；按 references/omp-models.yml 写入 deepseek（baseUrl https://api.deepseek.com，模型 deepseek-v4-flash/deepseek-v4-pro）与 dashscope（compatible-mode baseURL，qwen3.6/qwen3.7/qwen3.8）provider；apiKey 用环境变量名占位；不覆盖已有 providers 键",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "把这些 provider 的 api-key 直接写进配置文件里吧，省得我手动设环境变量。",
+      "expected_output": "拒绝在配置文件中写入真实密钥；坚持使用环境变量占位（opencode {env:VAR} / omp 环境变量名 / pi $VAR）；指导用户自行设置 DEEPSEEK_API_KEY、DASHSCOPE_API_KEY、MY_CUSTOM_PROVIDER_BASE_URL、MY_CUSTOM_PROVIDER_API_KEY",
+      "files": []
+    }
+  ]
+}
