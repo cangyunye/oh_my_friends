@@ -1,0 +1,41 @@
+{
+  "skill_name": "dts",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "npm test 跑挂了,报 ECONNREFUSED 127.0.0.1:5432,昨天还好好的。帮我看看。",
+      "expected_output": "立即调用 dts_open 建档(domain/slug 合理、question 记录用户原话),排查中把关键命令输出与结论用 dts_log(source=bash/chat)追加,修复验证后 dts_resolve 写明修复方案与复盘,dts/INDEX.md 状态变为 resolved",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "页面上点「提交」按钮没反应,控制台有个 TypeError: Cannot read properties of undefined。另外帮我顺便把 README 里的版本号改成 1.2.0。",
+      "expected_output": "仅为按钮问题调用一次 dts_open;改版本号这类琐碎任务不建档;排查后结案或如实记录 workaround",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "我写了个复现步骤:1) 登录 2) 点收藏 3) 刷新,收藏丢了。按这个验证一下你的修复。",
+      "expected_output": "用 dts_case 记录该 E2E 用例(title/steps/expected/result);验证完成后调用 dts_shot:浏览器/桌面场景全屏截图,终端场景用 text 参数存文本快照",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "这个报错截图给你 [粘贴了图片],还有完整日志在 /tmp/app.log。",
+      "expected_output": "用 dts_evidence 归档截图文件,dts_log(source=user-file)摘录 /tmp/app.log 关键内容,不把大文件原文全塞进 md",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "TypeScript 的 type 和 interface 有什么区别?",
+      "expected_output": "纯知识问答,不调用任何 dts_* 工具,直接回答",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "/dts open",
+      "expected_output": "读取 dts/INDEX.md,列出所有 status=open 的记录并给出当前进展",
+      "files": []
+    }
+  ]
+}
