@@ -19,7 +19,7 @@
 - 关键命令输出、错误堆栈 → `dts_log`(source=bash)
 - 对话中的关键结论、排查思路转折 → `dts_log`(source=chat)
 - 用户提供的日志文件 → `dts_log`(source=user-file,content 为关键摘录)
-- 即时生成的或用户提出的 E2E 用例 → `dts_case`
+- 即时生成的或用户提出的或用于回归的 E2E 用例 → `dts_case`
 - 用户贴图或给出的截图/文件路径 → `dts_evidence`
 - **E2E 验证完成后** → `dts_shot`:桌面/浏览器场景留空 text 做全屏截图;终端场景把关键输出传 text 存文本快照
 
