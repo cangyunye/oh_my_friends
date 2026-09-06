@@ -1,0 +1,7 @@
+{
+  "name": "dts-mcp",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "dts 问题档案 MCP stdio server(reasonix / trae cn 等支持 MCP 的 agent 共用)"
+}

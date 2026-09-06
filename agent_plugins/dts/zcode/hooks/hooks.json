@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "process",
+            "command": "node",
+            "args": ["${ZCODE_PLUGIN_ROOT}/hooks/session-rules.mjs"],
+            "displayName": "注入 dts 问题档案规则(RULES.md 内容,stdout 进会话上下文)"
+          }
+        ]
+      }
+    ]
+  }
+}

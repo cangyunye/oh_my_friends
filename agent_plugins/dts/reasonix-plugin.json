@@ -1,0 +1,25 @@
+{
+  "apiVersion": "reasonix.io/plugin/v2",
+  "name": "dts",
+  "version": "1.0.0",
+  "description": "agent 问题档案系统:把每个问题建档为 dts/<id>/dts.md(问题→环境→调查→日志→E2E→截图→修复→复盘)。MCP 提供 dts_* 工具,SessionStart 钩子注入 RULES.md,/:dts 命令回顾档案。",
+  "requires": [],
+  "contributes": {
+    "commands": ["reasonix/commands"],
+    "hooks": {
+      "SessionStart": [
+        {
+          "command": "node",
+          "args": ["hooks/session-rules.mjs"],
+          "description": "注入 dts 问题档案规则(RULES.md 内容,stdout 进会话上下文)"
+        }
+      ]
+    },
+    "mcpServers": {
+      "dts": {
+        "command": "node",
+        "args": ["mcp/launch.mjs"]
+      }
+    }
+  }
+}

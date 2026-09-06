@@ -1,0 +1,14 @@
+{
+  "name": "dts",
+  "version": "1.0.0",
+  "description": "agent 问题档案系统:把每个问题建档为 dts/<id>/dts.md(问题→环境→调查→日志→E2E→截图→修复→复盘)。MCP 提供 dts_* 工具,SessionStart 钩子注入 RULES.md,/dts 命令回顾档案。",
+  "commands": "zcode/commands",
+  "hooks": "zcode/hooks",
+  "mcpServers": {
+    "dts": {
+      "command": "node",
+      "args": ["${ZCODE_PLUGIN_ROOT}/mcp/launch.mjs"],
+      "cwd": "${ZCODE_PROJECT_DIR}"
+    }
+  }
+}
