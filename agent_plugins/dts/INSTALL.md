@@ -103,21 +103,19 @@ powershell -ExecutionPolicy Bypass -File .\trae\install.ps1 -Project C:\path\to\
 
 **卸载**:Trae 设置 → MCP 移除 `dts`;删项目规则中 begin/end 标记之间的块。
 
-## 5. zcode(原生插件,UI 安装)
+## 5. zcode(用户级直配,已实测;插件形态见 zcode/README.md)
 
-zcode 插件 manifest 在 `.zcode-plugin/plugin.json`,携带 MCP server、SessionStart 钩子与 `/dts` 命令,详见 [`zcode/README.md`](zcode/README.md)。
+**方式一(推荐,本机已按此安装)**——三个官方文档声明的作用域文件:
 
-**方式一(推荐,完整插件)**:
+1. MCP:`~/.zcode/cli/config.json` 的 `mcp.servers`(zcode 是嵌套 `mcp.servers`,非顶层 `mcpServers`):`{"dts": {"command": "node", "args": ["<绝对路径>/agent_plugins/dts/mcp/launch.mjs"]}}`
+2. 命令:复制 `zcode/commands/dts.md` → `~/.zcode/commands/dts.md`;验证 `zcode commands list` 出现 `/dts`
+3. 规则:RULES.md 内容(标记段)合并进 `~/.zcode/AGENTS.md`(用户级指令;配置文件的钩子需 `hooks.enabled: true` 才运行,故不走钩子)
 
-1. ZCode → 设置 → Plugin Management → Discover 标签 → 点 `+`
-2. 来源选"本地目录",指向本仓库或 `agent_plugins/dts` 所在路径
-3. 安装并启用 `dts`;MCP 的 `dts` server 自动连接
-
-**方式二(直配,只开 MCP 不装插件)**:把 `{"mcp": {"servers": {"dts": {"command": "node", "args": ["<绝对路径>/agent_plugins/dts/mcp/launch.mjs"]}}}}` 并入 `~/.zcode/cli/config.json`(注意 zcode 是嵌套 `mcp.servers`),命令文件复制到 `~/.zcode/commands/dts.md`;规则建议合并进 AGENTS.md(配置文件里的钩子需 `hooks.enabled: true` 才生效)。
+**方式二(插件形态)**:ZCode 设置 → 插件管理 → 发现 → `+` 添加本地目录 `agent_plugins/` → 安装 `dts`。注意:`zcode plugins list` 只枚举官方层插件,第三方 marketplace 安装结果以 UI 面板为准(详见 [`zcode/README.md`](zcode/README.md) 实测备注)。
 
 **验证**:新会话问"列出你的 dts 工具";说"npm test 挂了帮我看看",工作区根出现 `dts/<id>/dts.md`。
 
-**卸载**:设置 → Plugin Management 移除 `dts`;直配方式删对应 `mcp.servers.dts`、命令文件与规则段落。
+**卸载**:删 `mcp.servers.dts`、`~/.zcode/commands/dts.md`、`~/.zcode/AGENTS.md` 标记段;插件形态则在 UI 移除。
 
 ## 6. 全局自测(不依赖任何 agent)
 

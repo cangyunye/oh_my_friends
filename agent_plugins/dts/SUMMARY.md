@@ -79,6 +79,6 @@ agent_plugins/
 ## 6. 遗留事项
 
 - pi:换有效 API key 后补跑真实会话验证
-- zcode:manifest 依据逆向自本机已装插件与主程序 bundle,尚未经 UI 实装验证;首次本地 marketplace 安装时若 `mcpServers` 路径解析异常,改用 zcode/README 的"配置直写"方式兜底
+- zcode:本机已按用户级直配落地(config.json `mcp.servers` + `~/.zcode/commands/dts.md` + `~/.zcode/AGENTS.md` 标记段),`/dts` 命令注册已经 `zcode commands list` 验证,MCP 工具待新会话确认;插件形态(`.zcode-plugin` + `agent_plugins/marketplace.json`)待 UI"插件管理"实装——CLI `plugins list` 只枚举官方层,手写 cache/registry 登记不被认领(见 zcode/README.md 实测备注)
 - trae cn:可选产出"问题排查"自定义智能体配置说明(绑定 MCP + 规则)
 - v1.5:opencode `tool.execute.after` / pi `tool_result` / reasonix+zcode `PostToolUse` 钩子自动捕获 bash 报错输出
